@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
+//router
+const auth = require("./routes/auth");
+//db
+const mongoose = require("mongoose");
 
-app.get("/", (req, res) => {
-  res.send("Home");
-});
+app.use("/api/auth", auth);
 
-app.listen(3000, () => {
-  console.log(`Server listening on port 3000`);
-});
+mongoose
+  .connect("mongodb://localhost:27017/blog")
+  .then(() => console.log("connected to db"))
+  .catch((err) => console.log(`Error ${err}`));
+
+app.listen(3000, () => console.log(`Server listening on port 3000`));
