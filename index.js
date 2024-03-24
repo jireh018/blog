@@ -5,6 +5,7 @@ const auth = require("./routes/auth");
 //db
 const mongoose = require("mongoose");
 
+app.use(express.json());
 app.use("/api/auth", auth);
 
 mongoose
