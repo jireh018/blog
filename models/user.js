@@ -40,7 +40,7 @@ function validateUser(user) {
       .required(),
   });
 
-  return schema.validate(user, schema);
+  return schema.validate(user);
 }
 
 const User = mongoose.model("User", userSchema);
